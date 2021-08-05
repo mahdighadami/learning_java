@@ -1,7 +1,13 @@
+import java.util.Scanner;
 public class Factorial {
     public static void main(String[] argmnt){
-        System.out.println(fact_loop(5));
-        System.out.println(fact_recursive(3));
+
+        System.out.println("Enter the number:");
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+
+        System.out.println(fact_loop(n));
+        System.out.println(fact_recursive(n));
     }
 
     static int fact_loop(int n){
