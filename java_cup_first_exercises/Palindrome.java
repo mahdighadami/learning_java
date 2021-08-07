@@ -1,7 +1,13 @@
+import java.util.Scanner;
 public class Palindrome {
 
     public static void main(String[] argmnt){
-        System.out.println(palindrome(211112));
+
+        System.out.println("Enter the number:");
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+
+        System.out.println(palindrome(n));
     }
 
     static boolean palindrome(int n){
