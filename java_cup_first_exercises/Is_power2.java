@@ -1,7 +1,12 @@
+import java.util.Scanner;
 public class Is_power2 {
 
     public static void main(String[] argmnt){
-        System.out.println(is_power2(6));
+
+        System.out.print("Enter the number: ");
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        System.out.println(is_power2(n));
     }
 
     static boolean is_power2(int n){
