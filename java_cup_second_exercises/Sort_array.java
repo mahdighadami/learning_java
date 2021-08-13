@@ -5,7 +5,7 @@ public class Sort_array {
         long[] array = {3, 1, -4, 63, -16, 28};
         System.out.println(Arrays.toString(sortfunc(array)));
     }
-
+    // Using Selection Sort:
     public static long[] sortfunc(long[] array) {
         int n = array.length;
         for (int i = 0; i < n - 1; i++) {
