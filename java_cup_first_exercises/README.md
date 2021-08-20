@@ -5,11 +5,11 @@ Exercises description:
 	
 	[Fibonacci.java](Fibonacci.java)
 
-2. Write a method to check if a number is a palindrome or not:
+2. Write a method to check if a number is palindrome or not:
 
 	[Palindrome.java](Palindrome.java)
 
-3. Write a method to check if a number is a power of two:
+3. Write a method to check if a number is power of two or not:
 
 	[Is_power2.java](Is_power2.java)
 
