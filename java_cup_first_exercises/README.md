@@ -22,4 +22,5 @@ Exercises description:
 	[Area.java](Area.java)
 
 6. Write a method to return number's factorial:
+
 	[Factorial.java](Facrorial.java)
