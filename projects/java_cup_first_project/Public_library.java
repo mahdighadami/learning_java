@@ -25,7 +25,9 @@ public class Public_library {
                     counter += 1;
                     break;
                 case 2:
-                    read();
+                    System.out.print("Enter member ID: ");
+                    long id = scanner.nextLong();
+                    read(id, names, ages, sexes, bool_array);
                     break;
                 case 3:
                     update();
@@ -60,12 +62,22 @@ public class Public_library {
 
         members_id[i] = i + 1;
 
+        bool_array[i] = true;
+
         System.out.print("New member ID is: ");
         return members_id[i];
 
     }
 
-    private static void read() {
+    private static void read(long id, String[]names, short[]ages, char[]sexes, boolean[]bool_array) {
+        if (id < bool_array.length && bool_array[Math.toIntExact(id) - 1]) {
+            System.out.println("ID: " + id);
+            System.out.println("member name is: " + names[Math.toIntExact(id) - 1]);
+            System.out.println("member age is: " + ages[Math.toIntExact(id) - 1]);
+            System.out.println("member sex is: " + sexes[Math.toIntExact(id) - 1]);
+        }else{
+            System.out.println("This member is not exist!");
+        }
     }
 
     private static void update() {
