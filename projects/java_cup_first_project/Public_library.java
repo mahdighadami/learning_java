@@ -26,11 +26,13 @@ public class Public_library {
                     break;
                 case 2:
                     System.out.print("Enter member ID: ");
-                    long id = scanner.nextLong();
-                    read(id, names, ages, sexes, bool_array);
+                    long id_for_read = scanner.nextLong();
+                    read(id_for_read, names, ages, sexes, bool_array);
                     break;
                 case 3:
-                    update();
+                    System.out.print("Enter member ID: ");
+                    long id_for_update = scanner.nextLong();
+                    update(id_for_update, names, ages, sexes, bool_array);
                     break;
                 case 4:
                     delete();
@@ -45,6 +47,7 @@ public class Public_library {
     }
 
     private static long create(int i, String[]names, short[]ages, char[]sexes, long[]members_id, boolean[]bool_array) {
+
         System.out.println("\t\tAdd new member");
         Scanner scanner = new Scanner(System.in);
 
@@ -70,6 +73,8 @@ public class Public_library {
     }
 
     private static void read(long id, String[]names, short[]ages, char[]sexes, boolean[]bool_array) {
+
+        System.out.println("\t\tShow member info");
         if (id < bool_array.length && bool_array[Math.toIntExact(id) - 1]) {
             System.out.println("ID: " + id);
             System.out.println("member name is: " + names[Math.toIntExact(id) - 1]);
@@ -80,7 +85,32 @@ public class Public_library {
         }
     }
 
-    private static void update() {
+    private static void update(long id, String[]names, short[]ages, char[]sexes, boolean[]bool_array) {
+
+        System.out.println("\t\tEdit member info");
+        Scanner scanner = new Scanner(System.in);
+
+        if (id < bool_array.length && bool_array[Math.toIntExact(id) - 1]) {
+
+            System.out.println("ID: " + id);
+            System.out.println("member name is: " + names[Math.toIntExact(id) - 1]);
+            System.out.print("new member name: ");
+            String name = scanner.nextLine();
+            names[Math.toIntExact(id) - 1] = name;
+
+            System.out.println("member age is: " + ages[Math.toIntExact(id) - 1]);
+            System.out.print("new member age: ");
+            short age = scanner.nextShort();
+            ages[Math.toIntExact(id) - 1] = age;
+
+            System.out.println("member sex is: " + sexes[Math.toIntExact(id) - 1]);
+            System.out.print("new member sex(f or m): ");
+            char sex = scanner.next().charAt(0);
+            sexes[Math.toIntExact(id) - 1] = sex;
+
+        }else{
+            System.out.println("This member is not exist!");
+        }
     }
 
     private static void delete() {
