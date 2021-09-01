@@ -19,26 +19,39 @@ public class Public_library {
             System.out.println("5.Exit");
             System.out.print("Enter selected number: ");
             short selection = scanner.nextShort();
+
             switch (selection){
+
                 case 1:
+                    System.out.println("\t\tAdd new member");
                     System.out.println(create(counter, names, ages, sexes, members_id, bool_array));
                     counter += 1;
                     break;
+
                 case 2:
+                    System.out.println("\t\tShow member info");
                     System.out.print("Enter member ID: ");
                     long id_for_read = scanner.nextLong();
                     read(id_for_read, names, ages, sexes, bool_array);
                     break;
+
                 case 3:
+                    System.out.println("\t\tEdit member info");
                     System.out.print("Enter member ID: ");
                     long id_for_update = scanner.nextLong();
                     update(id_for_update, names, ages, sexes, bool_array);
                     break;
+
                 case 4:
-                    delete();
+                    System.out.println("\t\tDelete member");
+                    System.out.print("Enter member ID: ");
+                    long id_for_delete = scanner.nextLong();
+                    delete(id_for_delete, names, ages, sexes, bool_array);
                     break;
+
                 case 5:
                     break outer;
+
                 default:
                     System.out.println("Enter valid number!");
 
@@ -48,7 +61,6 @@ public class Public_library {
 
     private static long create(int i, String[]names, short[]ages, char[]sexes, long[]members_id, boolean[]bool_array) {
 
-        System.out.println("\t\tAdd new member");
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter member name: ");
@@ -74,12 +86,12 @@ public class Public_library {
 
     private static void read(long id, String[]names, short[]ages, char[]sexes, boolean[]bool_array) {
 
-        System.out.println("\t\tShow member info");
-        if (id < bool_array.length && bool_array[Math.toIntExact(id) - 1]) {
+        if (id <= bool_array.length && bool_array[Math.toIntExact(id) - 1]) {
             System.out.println("ID: " + id);
             System.out.println("member name is: " + names[Math.toIntExact(id) - 1]);
             System.out.println("member age is: " + ages[Math.toIntExact(id) - 1]);
             System.out.println("member sex is: " + sexes[Math.toIntExact(id) - 1]);
+
         }else{
             System.out.println("This member is not exist!");
         }
@@ -87,12 +99,11 @@ public class Public_library {
 
     private static void update(long id, String[]names, short[]ages, char[]sexes, boolean[]bool_array) {
 
-        System.out.println("\t\tEdit member info");
         Scanner scanner = new Scanner(System.in);
 
-        if (id < bool_array.length && bool_array[Math.toIntExact(id) - 1]) {
-
+        if (id <= bool_array.length && bool_array[Math.toIntExact(id) - 1]) {
             System.out.println("ID: " + id);
+
             System.out.println("member name is: " + names[Math.toIntExact(id) - 1]);
             System.out.print("new member name: ");
             String name = scanner.nextLine();
@@ -113,6 +124,32 @@ public class Public_library {
         }
     }
 
-    private static void delete() {
+    private static void delete(long id, String[]names, short[]ages, char[]sexes, boolean[]bool_array) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        if (id <= bool_array.length && bool_array[Math.toIntExact(id) - 1]) {
+            System.out.println("Are you sure?");
+            System.out.println("1.Yes\n2.No");
+            System.out.print("Choose: ");
+            short choose = scanner.nextShort();
+
+            if (choose == 1) {
+                names[Math.toIntExact(id) - 1] = null;
+                ages[Math.toIntExact(id) - 1] = 0;
+                sexes[Math.toIntExact(id) -1] = 0;
+                bool_array[Math.toIntExact(id) - 1] = false;
+                System.out.println("member removed!");
+
+            }else if (choose == 2) {
+                System.out.println("canceled");
+
+            }else{
+                System.out.println("wrong input");
+            }
+
+        }else{
+            System.out.println("This member is not exist!");
+        }
     }
 }
